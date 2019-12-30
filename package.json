@@ -1,0 +1,14 @@
+{
+  "name": "quantitymeasurmentnode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "quantityMeasurmentTest.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "enum": "^2.5.0"
+  }
+}

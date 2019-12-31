@@ -15,10 +15,12 @@ class Length {
             return lengthEnum.getValue(`YARD`);
         } else if (unit == lengthEnum.CENTIMETER) {
             return lengthEnum.getValue(`CENTIMETER`);
+        }else{
+            return 0;
         }
     }
 }
 module.exports = {
-    length: Length,
+    length: new Length,
     lengthEnum: Object.freeze(lengthEnum)
 };

@@ -1,46 +1,33 @@
 let lUnit = require('./length');
-const lEnum =(['FEET','INCH','CENTIMETER','YARD']);
-const vEnum = (['GALLON','LITRES','MILLILITERS'])
-const allEnum = ([lEnum,vEnum])
+let vUnit = require('./volume');
+let wUnit = require('./weights');
+let tUnit = require('./temperature')
+const lEnum = ['FEET', 'INCH', 'CENTIMETER', 'YARD'];
+const vEnum = ['GALLON', 'LITRES', 'MILLILITERS'];
+const wEnum = ['KILOGRAMS', 'GRAMS', 'TONNES'];
+const allEnum = [lEnum, vEnum, wEnum]
 class QuantityMeasurment {
 
-    constructor(unit, value) {
-        this.value = value;
-        this.units = unit;
-    }
-
     compareUnits(unit, unitValue) {
-        console.log("unit1121",unit);
-        console.log("value123",unitValue)
-        for(let i =0;i<= allEnum.length; i++){
-            if(allEnum[i] == lEnum || allEnum[i] == vEnum)
-            if(lEnum[i] == unit.key){
-                console.log("unit key",unit.key)
-            return Math.round(unitValue * lUnit.length.conversion(unit));
-        }else
-         return "Type not matching";
-        }
-
+        return allEnum.map(unit1 => {
+            if (lEnum == unit1)
+                return lUnit.length.conversion(unitValue, unit);
+            else if (vEnum == unit1) 
+                return vUnit.volume.conversion(unitValue, unit);
+            else if (wEnum == unit1)
+                return wUnit.weight.conversion(unitValue, unit);
+        })
     }
-    // addition(val1, val2) {
-    //     return val1 + val2;
-    // }
 
-    // compareUnits(o1,o2){
-    //     this.equals(o1,o2)
-    // }
+    addition(val1, val2) {
+        return val1 + val2;
+    }
 
-
-    // equals(o1,o2) {
-    //     if(o1 === o2){
-    //         return true;
-    //     }else if(                                                                                                                                                                                                                                                                     )
-    //     if (this == o) return true;
-    //     if (o == null || getClass() != o.getClass()) return false;
-    //     return Objects.equals(value, that.value) &&
-    //             Objects.equals(units, that.units);
-    // }
-
-
+    compareTemperatureUnits(unit, unitValue) {
+        if (unit.key == 'FAHRENHEIT')
+            return ((unitValue - tUnit.temperature.conversion(unit)) * 5 / 9);
+        else
+            return (unitValue * tUnit.temperature.conversion(unit));
+    }
 }
 module.exports = new QuantityMeasurment();

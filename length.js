@@ -6,7 +6,7 @@ const lengthEnum = new Enum({
     CENTIMETER: 0.4
 });
 class Length {
-    conversion(unit) {
+    check(unit) {
         if (unit == lengthEnum.INCH) {
             return lengthEnum.getValue(`INCH`);
         } else if (unit == lengthEnum.FEET) {
@@ -16,6 +16,10 @@ class Length {
         } else if (unit == lengthEnum.CENTIMETER) {
             return lengthEnum.getValue(`CENTIMETER`);
         }
+    }
+
+    conversion(unitValue,unit) {
+        return Math.round(unitValue * this.check(unit));
     }
 }
 module.exports = {

@@ -4,13 +4,17 @@ const volumeEnum = new Enum({
 
 });
 class Volume {
-    conversion(unit) {
+    check(unit) {
         if (unit == volumeEnum.GALLON) 
             return volumeEnum.getValue(`GALLON`);
          else if (unit == volumeEnum.LITRES) 
             return volumeEnum.getValue(`LITRES`);
          else if (unit == volumeEnum.MILLILITERS) 
             return volumeEnum.getValue(`MILLILITERS`);
+    }
+
+    conversion(unitValue,unit) {
+        return unitValue * this.check(unit);
     }
 }
 module.exports = {

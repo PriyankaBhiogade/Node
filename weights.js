@@ -6,7 +6,7 @@ const weightEnum = new Enum({
     TONNES: 1000,
 });
 class Weight {
-    conversion(unit) {
+    check(unit) {
         if (unit == weightEnum.KILOGRAMS) {
             return weightEnum.getValue(`KILOGRAMS`);
         } else if (unit == weightEnum.GRAMS) {
@@ -14,6 +14,10 @@ class Weight {
         } else if (unit == weightEnum.TONNES) {
             return weightEnum.getValue(`TONNES`);
         }
+    }
+
+    conversion(unitValue, unit) {
+        return Math.round(unitValue * this.check(unit));
     }
 }
 module.exports = {

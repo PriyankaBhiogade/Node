@@ -2,7 +2,7 @@ let assert = require('assert');
 let quantityMeasurment = require("./quantityMeasurment copy");
 let lengthUnit = require('./length');
 let volumeUnit = require('./volume');
-
+let weightUnit = require('./weights');
 
 // describe(`Length Unit validation Test` ,() => {
 // 	it(`given 0Feet And 0Feet When equal should return true `,() =>{
@@ -138,5 +138,26 @@ describe(`Volume Unit validation Test`, () => {
         let ml = quantityMeasurment.compareVolumeUnits(volumeUnit.volumeEnum.MILLILITERS,1000);
         let sum = quantityMeasurment.addition(ml,litres)
         assert.equal(2,sum);
+    });
+});
+
+describe(`Weight Unit validation Test`, () => {
+    it(`given 1KG And 1000Grams When Equal should return true `, () => {
+        let kg = quantityMeasurment.compareWeightUnits(weightUnit.weightEnum.KILOGRAMS,1);
+        let grams = quantityMeasurment.compareWeightUnits(weightUnit.weightEnum.GRAMS,1000);
+        assert.equal(kg, grams);
+    });
+
+    it(`given 1Tonne And 1000kg When Equal should return true `, () => {
+        let tonne = quantityMeasurment.compareWeightUnits(weightUnit.weightEnum.TONNES,1);
+        let kg = quantityMeasurment.compareWeightUnits(weightUnit.weightEnum.KILOGRAMS,1000);
+        assert.equal(tonne,kg);
+    });
+
+    it(`given 1Tonne And 1000gm When is Equal to 1001kg should return true `, () => {
+        let tonne = quantityMeasurment.compareWeightUnits(weightUnit.weightEnum.TONNES,1);
+        let gm = quantityMeasurment.compareWeightUnits(weightUnit.weightEnum.GRAMS,1000);
+        let sum = quantityMeasurment.addition(tonne,gm)
+        assert.equal(1001,sum);
     });
 });

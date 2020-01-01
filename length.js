@@ -15,8 +15,6 @@ class Length {
             return lengthEnum.getValue(`YARD`);
         } else if (unit == lengthEnum.CENTIMETER) {
             return lengthEnum.getValue(`CENTIMETER`);
-        }else{
-            return 0;
         }
     }
 }

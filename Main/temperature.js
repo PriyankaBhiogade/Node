@@ -13,7 +13,7 @@ class Temperature {
         }
     }
 
-    conversionFtoC(unitValue,unit) {
+    conversionFtoC(unitValue, unit) {
         if (unit.key == 'FAHRENHEIT')
             return Math.round((unitValue - this.checkUnit(unit)) * 5 / 9);
         else

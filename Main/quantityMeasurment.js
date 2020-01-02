@@ -5,10 +5,16 @@ let tUnit = require('./temperature')
 const lEnum = ['FEET', 'INCH', 'CENTIMETER', 'YARD'];
 const vEnum = ['GALLON', 'LITRES', 'MILLILITERS'];
 const wEnum = ['KILOGRAMS', 'GRAMS', 'TONNES'];
-const tEnum = ['FAHRENHEIT','CELSIUS'];
-const allEnum = [lEnum, vEnum, wEnum,tEnum]
+const tEnum = ['FAHRENHEIT', 'CELSIUS'];
+const allEnum = [lEnum, vEnum, wEnum, tEnum]
 
 class QuantityMeasurment {
+
+    constructor(unit, unitValue) {
+        this.unit = unit;
+        this.unitValue = unitValue;
+    }
+
     compareUnits(unit, unitValue) {
         return allEnum.map(unit1 => {
             if (lEnum === unit1)
@@ -18,7 +24,8 @@ class QuantityMeasurment {
             else if (wEnum === unit1)
                 return wUnit.weight.conversion(unitValue, unit);
             else if (tEnum === unit1)
-                return tUnit.temperature.conversionFtoC(unitValue, unit);
+                if (unit1 == 'FAHRENHEIT')
+                    return tUnit.temperature.conversionFtoC(unitValue, unit);
         })
     }
 
@@ -26,4 +33,4 @@ class QuantityMeasurment {
         return val1 + val2;
     }
 }
-module.exports = new QuantityMeasurment();
+module.exports = QuantityMeasurment;

@@ -5,7 +5,6 @@ let volumeUnit = require('../Main/volume');
 let weightUnit = require('../Main/weights');
 let temperatureUnit = require('../Main/temperature');
 
-
 describe(`Length Unit validation Test`, () => {
     it(`given 0Feet And 0Feet When equal should return true `, () => {
         let feet1 = quantityMeasurment.compareUnits(lengthUnit.lengthEnum.FEET, 1);

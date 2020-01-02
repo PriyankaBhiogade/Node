@@ -14,19 +14,19 @@ const allEnum = new Enum({
     CELSIUS: 1.0,
 });
 class ConversionUnit {
-    checkUnit(unit) {
+    getConversionValue(unit) {
         return allEnum.getValue(unit);
     }
 
-    conversion(unitValue, unit) {
-        return Math.round(unitValue * this.checkUnit(unit));
+    convert(unitValue, unit) {
+        return Math.round(unitValue * this.getConversionValue(unit));
     }
 
-    conversionTemp(unitValue, unit) {
+    convertTemp(unitValue, unit) {
         if (unit.key == allEnum.FAHRENHEIT)
-            return Math.round((unitValue - this.checkUnit(unit)) * 5 / 9);
+            return Math.round((unitValue - this.getConversionValue(unit)) * 5 / 9);
         else
-            return (unitValue * this.checkUnit(unit));
+            return (unitValue * this.getConversionValue(unit));
     }
 }
 module.exports = {

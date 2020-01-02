@@ -4,9 +4,9 @@ class QuantityMeasurment {
 
     compareUnits(unit, unitValue) {
         if(unit.key == unitConversion.allEnum.FAHRENHEIT || unit.key == unitConversion.allEnum.CELSIUS)
-            return unitConversion.conversionUnit.conversionTemp(unitValue,unit)
+            return unitConversion.conversionUnit.convertTemp(unitValue,unit)
         else
-            return unitConversion.conversionUnit.conversion(unitValue, unit);
+            return unitConversion.conversionUnit.convert(unitValue, unit);
     }
 
     addition(val1, val2) {

@@ -5,7 +5,7 @@ let conversionUnit = require('../Main/conversionUnit');
 describe(`Length Unit validation Test`, () => {
     it(`given 0Feet And 0Feet When equal should return true `, () => {
         let feet1 = quantityMeasurment.compareUnits(conversionUnit.allEnum.FEET, 0);
-        let feet2 = quantityMeasurment.compareUnits(conversionUnit.allEnum.GALLON, 0);
+        let feet2 = quantityMeasurment.compareUnits(conversionUnit.allEnum.FEET, 0);
         assert.equal(feet1, feet2);
     });
 
